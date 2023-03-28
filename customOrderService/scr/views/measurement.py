@@ -33,7 +33,7 @@ class MeasurementApi(Resource):
             )
 
             measurement.save()
-            return Response(measurement.to_json(), mimetype="application/json", status=200)
+            return Response(measurement.to_json(), mimetype="application/json", status=201)
         except (FieldDoesNotExistError, ValidationError):
             raise SchemaValidationError
 

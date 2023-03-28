@@ -1,5 +1,5 @@
 from datetime import datetime
-from .db import db 
+import mongoengine as db
 
 
 GENDER = (

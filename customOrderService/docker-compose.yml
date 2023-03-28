@@ -1,0 +1,44 @@
+version: "3.7"
+services:
+
+  app:
+    build: .
+    container_name: Lechene_CustomOrderApp_container
+    command: python -u app.py
+
+    ports:
+      - "5003:5003"
+
+    volumes:
+      - .:/app
+
+    depends_on:
+      - mongo_db
+
+    links:
+      - mongo_db
+    
+    
+
+  mongo_db:
+
+    image: mongo:4.0.28-xenial
+    restart: unless-stopped
+    container_name: Lechene_CustomOrderMongo_container
+    hostname: 127.0.0.1
+
+    ports:
+      - "27017:27017"
+
+    environment:
+      - MONGO_INITDB_DATABASE=custom-order-ServiceDb
+    
+    volumes:
+      - mongo_database:/data/db
+
+volumes:
+  mongo_database:
+    
+
+
+  

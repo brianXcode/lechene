@@ -19,7 +19,7 @@ class OrderProductsApi(Resource):
     def post(self):
         body = request.get_json()
         
-        req = requests.get("http://127.0.0.1:5000/api/product/%s" %body["id"])
+        req = requests.get("http://127.0.0.1:5002/api/product/%s" %body["id"])
         product = req.json()
 
         ordered = OrderProduct.objects.create(

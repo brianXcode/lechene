@@ -8,7 +8,7 @@ api = Api(app)
 
 app.config["MONGODB_SETTINGS"] = MONGO_URI= {
     "db": "payment-delivery-ServiceDb",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "port": 27017
 }
 
@@ -17,4 +17,8 @@ initialize_routes(api)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(
+        debug=True,
+        host = '0.0.0.0',
+        port = 5004
+        )

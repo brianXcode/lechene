@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+
+  app:
+    build: .
+    container_name: Lechene_Paymentservice_container
+    hostname: "127.0.0.1"
+    command: python -u app.py
+
+    ports:
+      - "5004:5004"
+
+    volumes:
+      - .:/app
+
+    links:
+      - mongo_db
+    
+    
+
+  mongo_db:
+
+    image: mongo:4.0.28-xenial
+    restart: unless-stopped
+    container_name: Lechene_PaymentServiceMongo_container
+    hostname: "127.0.0.1"
+
+    ports:
+      - "27017:27017"
+
+    environment:
+      - MONGO_INITDB_DATABASE=payment-delivery-ServiceDb
+    
+    volumes:
+      - mongo_database:/data/db
+
+volumes:
+  mongo_database:
+    driver: local
+
+
+  

@@ -2,16 +2,16 @@ from flask import Flask, request
 from scr.database.db import initialize_db
 from scr.urls.routes import initialize_routes
 from flask_restful import Api
-import requests
+
 
 
 app = Flask(__name__)
 api = Api(app) 
 
 
-app.config["MONGODB_SETTINGS"] = MONGO_URI= {
+app.config["MONGODB_SETTINGS"] = MONGO_URL = {
     "db": "order-Service-db",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "port": 27017
 }
 

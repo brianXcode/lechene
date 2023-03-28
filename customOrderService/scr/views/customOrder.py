@@ -3,6 +3,7 @@ from flask_restful import Resource
 from scr.database.models import CustomOrder
 from scr.utility.errors import FieldDoesNotExistError, SchemaValidationError
 from mongoengine.errors import ValidationError
+import requests
 
 
 
@@ -14,11 +15,11 @@ class CustomOrderApi(Resource):
     def post(self):
         try:
             body = request.get_json()
-            productCategoryReq = request.get(
-                "127.0.0.1:5000/api/product_category/%s" %body["product_category_id"],
+            productCategoryReq = requests.get(
+                "127.0.0.1:5003/api/product_category/%s" %body["product_category_id"],
             )
-            productSubCategoryReq = request.get(
-                "127.0.0.1:5000/api/product_sub_category/%s" %body["product_SubCategory_id"]
+            productSubCategoryReq = requests.get(
+                "127.0.0.1:5003/api/product_sub_category/%s" %body["product_SubCategory_id"]
             )
             product_category = productCategoryReq.json()
             product_SubCategory = productSubCategoryReq.json()

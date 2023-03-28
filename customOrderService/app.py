@@ -8,9 +8,9 @@ app = Flask(__name__)
 api = Api(app)
 
 
-app.config["MONGODB_SETTINGS"] = MONGO_URI= {
+app.config["MONGODB_SETTINGS"] = MONGO_URL = {
     "db": "custom-order-ServiceDb",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "port": 27017
 }
 
