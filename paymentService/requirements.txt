@@ -5,4 +5,6 @@ Flask-RESTful==0.3.9
 Flask-WTF==1.0.1
 mongoengine==0.24.2
 pymongo==4.2.0
+requests ==2.28.1
+
 
